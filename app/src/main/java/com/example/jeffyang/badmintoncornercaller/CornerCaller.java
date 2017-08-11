@@ -20,13 +20,11 @@ public class CornerCaller implements Parcelable {
     public CornerCaller(){
     }
 
-
-
     // this below code is for setting up the object to be passed through intent to the new activity
     public CornerCaller(Parcel in) {
         numberOfCalls = in.readInt();
         callInterval = in.readDouble();
-        in.readList(corners, CornerCaller.class.getClassLoader());   // TODO will null break it?
+        in.readList(corners, CornerCaller.class.getClassLoader());
 
     }
     public int describeContents() {
@@ -57,11 +55,8 @@ public class CornerCaller implements Parcelable {
     public int callCorner(){
         Random rand = new Random();
 
-        System.out.println("Temp value is " + corners.size());
-
         int randNum = rand.nextInt(corners.size());
         return corners.get(randNum);
-
     }
 
 
@@ -85,7 +80,6 @@ public class CornerCaller implements Parcelable {
     public int getNumberOfCalls() {
         return numberOfCalls;
     }
-
 
     public double getCallInterval() {
         return callInterval;
@@ -117,6 +111,38 @@ public class CornerCaller implements Parcelable {
     }
     public void selectCorner6() {
         corners.add(6);
+    }
+
+
+    public void deselectCorner1() {
+        if (corners.contains(1)) {
+            corners.remove((Integer) 1);
+        }
+    }
+    public void deselectCorner2() {
+        if (corners.contains(2)) {
+            corners.remove((Integer) 2);
+        }
+    }
+    public void deselectCorner3() {
+        if (corners.contains(3)) {
+            corners.remove((Integer) 3);
+        }
+    }
+    public void deselectCorner4() {
+        if (corners.contains(4)) {
+            corners.remove((Integer) 4);
+        }
+    }
+    public void deselectCorner5() {
+        if (corners.contains(5)) {
+            corners.remove((Integer) 5);
+        }
+    }
+    public void deselectCorner6() {
+        if (corners.contains(6)) {
+            corners.remove((Integer) 6);
+        }
     }
 
 }

@@ -40,11 +40,10 @@ public class Main2Activity extends AppCompatActivity {
 
     @Override
     public void onStop() {
-        super.onStop();  // Always call the superclass method first
-
+        super.onStop();
         asyncTaskRunner.cancel(true);
 
-    }   // TODO object is not destroyed when timer is exited
+    }
 
 
 
@@ -62,6 +61,18 @@ public class Main2Activity extends AppCompatActivity {
 
         public AsyncTaskRunner(Context context){
             this.context = context;
+        }
+
+        @Override
+        protected void onPreExecute(){
+
+            // loading all the audio files to be ready to be played
+            soundPoolMap.put(0, soundPool.load(context, R.raw.one, 0));
+            soundPoolMap.put(1, soundPool.load(context, R.raw.two, 0));
+            soundPoolMap.put(2, soundPool.load(context, R.raw.three, 0));
+            soundPoolMap.put(3, soundPool.load(context, R.raw.four, 0));
+            soundPoolMap.put(4, soundPool.load(context, R.raw.five, 0));
+            soundPoolMap.put(5, soundPool.load(context, R.raw.six, 0));
         }
 
         @Override
@@ -118,17 +129,7 @@ public class Main2Activity extends AppCompatActivity {
         protected void onPostExecute(String result){
 
         }
-        @Override
-        protected void onPreExecute(){
 
-            // loading all the audio files to be ready to be played
-            soundPoolMap.put(0, soundPool.load(context, R.raw.one, 0));
-            soundPoolMap.put(1, soundPool.load(context, R.raw.two, 0));
-            soundPoolMap.put(2, soundPool.load(context, R.raw.three, 0));
-            soundPoolMap.put(3, soundPool.load(context, R.raw.four, 0));
-            soundPoolMap.put(4, soundPool.load(context, R.raw.five, 0));
-            soundPoolMap.put(5, soundPool.load(context, R.raw.six, 0));
-        }
 
 
     }

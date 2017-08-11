@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         cornerCaller = new CornerCaller();
 
-
-
         numberOfCallSpinner = (Spinner) findViewById(R.id.numberOfCallSpinner);
         numberOfCallSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -78,40 +76,57 @@ public class MainActivity extends AppCompatActivity {
                 if (corner1.isChecked()) {
                     cornerCaller.selectCorner1();
                     cornerSelectedFlag = true;
+                } else {
+                    cornerCaller.deselectCorner1();
                 }
+
                 if (corner2.isChecked()) {
                     cornerCaller.selectCorner2();
                     cornerSelectedFlag = true;
+                } else {
+                    cornerCaller.deselectCorner2();
                 }
+
                 if (corner3.isChecked()) {
                     cornerCaller.selectCorner3();
                     cornerSelectedFlag = true;
+                } else {
+                    cornerCaller.deselectCorner3();
                 }
+
                 if (corner4.isChecked()) {
                     cornerCaller.selectCorner4();
                     cornerSelectedFlag = true;
+                } else {
+                    cornerCaller.deselectCorner4();
                 }
+
                 if (corner5.isChecked()) {
                     cornerCaller.selectCorner5();
                     cornerSelectedFlag = true;
+                } else {
+                    cornerCaller.deselectCorner5();
                 }
+
                 if (corner6.isChecked()) {
                     cornerCaller.selectCorner6();
                     cornerSelectedFlag = true;
+                }else {
+                    cornerCaller.deselectCorner6();
                 }
 
                 if (cornerSelectedFlag == true){
                 Intent in = new Intent(MainActivity.this, Main2Activity.class);
                 in.putExtra("Caller_object", cornerCaller);
-
                 startActivity(in);
                 } else {
                     Toast.makeText(context, "Please select one corner", Toast.LENGTH_SHORT).show();
-
                 }
 
             }
         });
 
     }
+
+
 }
