@@ -20,7 +20,7 @@ public class CornerCaller implements Parcelable {
     public CornerCaller(){
     }
 
-    // this below code is for setting up the object to be passed through intent to the new activity
+    // this below code is for setting up the parcelable object to be passed to the new activity
     public CornerCaller(Parcel in) {
         numberOfCalls = in.readInt();
         callInterval = in.readDouble();
@@ -42,16 +42,12 @@ public class CornerCaller implements Parcelable {
         }
 
         public CornerCaller[] newArray(int size) {
-
             return new CornerCaller[size];
         }
     };
 
 
-
-
-
-    // this returns the corner as you would expect and not zero index
+    // this method returns a random corner from the ArrayList of selected corners.
     public int callCorner(){
         Random rand = new Random();
 
@@ -59,32 +55,22 @@ public class CornerCaller implements Parcelable {
         return corners.get(randNum);
     }
 
-
-
-
+    // this method is used to update the number of corners left to call
     public void decrementNumberOfCalls(){
         numberOfCalls--;
     }
-
-
-
-
-
 
 
     // getters and setters
     public void setNumberOfCalls(int numberOfCalls) {
         this.numberOfCalls = numberOfCalls;
     }
-
     public int getNumberOfCalls() {
         return numberOfCalls;
     }
-
     public double getCallInterval() {
         return callInterval;
     }
-
     public void setCallInterval(double callInterval) {
         this.callInterval = callInterval;
     }
@@ -93,7 +79,7 @@ public class CornerCaller implements Parcelable {
 
 
 
-    // setup for the corners ArrayList
+    // setup for the corners ArrayList, determining which corners have been selected
     public void selectCorner1() {
         corners.add(1);
     }

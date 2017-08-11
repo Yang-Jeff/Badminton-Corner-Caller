@@ -30,10 +30,10 @@ public class Main2Activity extends AppCompatActivity {
         cornerCaller = in.getParcelableExtra("Caller_object");
 
         // placeholder text
+        currentCorner.setTextSize(50);
         currentCorner.setText("Ready");
 
         // this does the bulk of the work
-
         asyncTaskRunner.execute();
 
     }
@@ -42,13 +42,7 @@ public class Main2Activity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         asyncTaskRunner.cancel(true);
-
     }
-
-
-
-
-
 
 
 
@@ -65,14 +59,13 @@ public class Main2Activity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute(){
-
             // loading all the audio files to be ready to be played
-            soundPoolMap.put(0, soundPool.load(context, R.raw.one, 0));
-            soundPoolMap.put(1, soundPool.load(context, R.raw.two, 0));
-            soundPoolMap.put(2, soundPool.load(context, R.raw.three, 0));
-            soundPoolMap.put(3, soundPool.load(context, R.raw.four, 0));
-            soundPoolMap.put(4, soundPool.load(context, R.raw.five, 0));
-            soundPoolMap.put(5, soundPool.load(context, R.raw.six, 0));
+            soundPoolMap.put(1, soundPool.load(context, R.raw.one, 0));
+            soundPoolMap.put(2, soundPool.load(context, R.raw.two, 0));
+            soundPoolMap.put(3, soundPool.load(context, R.raw.three, 0));
+            soundPoolMap.put(4, soundPool.load(context, R.raw.four, 0));
+            soundPoolMap.put(5, soundPool.load(context, R.raw.five, 0));
+            soundPoolMap.put(6, soundPool.load(context, R.raw.six, 0));
         }
 
         @Override
@@ -96,7 +89,7 @@ public class Main2Activity extends AppCompatActivity {
                 corner = cornerCaller.callCorner();
 
                 // plays the correct audio file based on which corner
-                soundPool.play(soundPoolMap.get(corner - 1), 1f, 1f, 100, 0, 1f);
+                soundPool.play(soundPoolMap.get(corner), 1f, 1f, 100, 0, 1f);
 
                 // displays corner number on screen
                 publishProgress(corner);
@@ -121,6 +114,7 @@ public class Main2Activity extends AppCompatActivity {
 
             int i = values[0];
 
+            currentCorner.setTextSize(300);
             currentCorner.setText(Integer.toString(i));
             numCornerLeft.setText(Integer.toString(cornerCaller.getNumberOfCalls()));
         }
@@ -129,9 +123,6 @@ public class Main2Activity extends AppCompatActivity {
         protected void onPostExecute(String result){
 
         }
-
-
-
     }
 
 

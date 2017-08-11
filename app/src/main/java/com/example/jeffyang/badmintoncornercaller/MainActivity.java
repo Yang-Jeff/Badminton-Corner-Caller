@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     Spinner numberOfCallSpinner, callIntervalSpinner;
     CornerCaller cornerCaller;
     CheckBox corner1, corner2, corner3, corner4, corner5, corner6;
-    Context context = this; // this will be used by the toast if the user did not select any corner
+    Context context = this; // this will be used by the toast alerting the user that they did not select any corner
 
 
     @Override
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         cornerCaller = new CornerCaller();
 
+        // this sets up one of the spinners
         numberOfCallSpinner = (Spinner) findViewById(R.id.numberOfCallSpinner);
         numberOfCallSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // this sets up the other spinner
         callIntervalSpinner = (Spinner) findViewById(R.id.callIntervalSpinner);
         callIntervalSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         corner5 = (CheckBox) findViewById(R.id.corner5);
         corner6 = (CheckBox) findViewById(R.id.corner6);
 
+        // this button starts the corner calling
         start = (Button) findViewById(R.id.button);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
                 boolean cornerSelectedFlag = false;
 
+                // below, determining which corners have been selected
                 if (corner1.isChecked()) {
                     cornerCaller.selectCorner1();
                     cornerSelectedFlag = true;
@@ -115,10 +119,11 @@ public class MainActivity extends AppCompatActivity {
                     cornerCaller.deselectCorner6();
                 }
 
+
                 if (cornerSelectedFlag == true){
-                Intent in = new Intent(MainActivity.this, Main2Activity.class);
-                in.putExtra("Caller_object", cornerCaller);
-                startActivity(in);
+                    Intent in = new Intent(MainActivity.this, Main2Activity.class);
+                    in.putExtra("Caller_object", cornerCaller);
+                    startActivity(in);
                 } else {
                     Toast.makeText(context, "Please select one corner", Toast.LENGTH_SHORT).show();
                 }
@@ -127,6 +132,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
 
 }

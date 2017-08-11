@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#212121</color>
     <color name="colorAccent">#B71C1C</color>
     <color name="setupBackground">#4CAF50</color>
+    <color name="callerBackground">#E0E0E0</color>
     <color name="spinnerBackground">#F5F5F5</color>
     <color name="textColor">#212121</color>
+
 </resources>
